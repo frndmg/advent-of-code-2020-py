@@ -1,6 +1,6 @@
 import fileinput
 
-from . import count_trees
+from . import count_trees, multiply_trees
 
 
 def main():
@@ -13,5 +13,16 @@ def main():
     )
 
 
+def main2():
+    local_map = ''.join(fileinput.input())
+
+    trees_multiplied = multiply_trees(local_map)
+
+    print(
+        trees_multiplied,
+    )
+
+
 if __name__ == '__main__':
-    main()
+    # main()
+    main2()
