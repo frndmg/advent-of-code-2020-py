@@ -56,8 +56,6 @@ def tuple_map(*fs):
 
     return compose(
         tuple,
-        partial(
-            map,
         fmap(
             tupled(lambda i, v: fs[i](v) if i < len(fs) and fs[i] else v),
         ),
