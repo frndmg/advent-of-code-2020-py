@@ -1,4 +1,4 @@
-from .fp import (apply, compose, count, ffilter, fmap, fnone, identity,
+from .fp import (apply, compose, ffilter, fmap, fnone, identity, length,
                  tuple_map, tupled)
 
 __all__ = [
@@ -7,7 +7,7 @@ __all__ = [
     'fnone',
     'tupled',
     'tuple_map',
-    'count',
+    'length',
     'identity',
     'apply',
     'ffilter',

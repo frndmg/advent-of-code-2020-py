@@ -51,7 +51,7 @@ def apply(f, *args, **kwargs):
     return f(*args, **kwargs)
 
 
-def count(xs):
+def length(xs):
     len_ = getattr(xs, '__len__', None)
 
     def default_len():

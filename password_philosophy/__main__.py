@@ -1,7 +1,7 @@
 import fileinput
 import re
 
-from fp import compose, count, ffilter
+from fp import compose, ffilter, length
 
 from . import valid_password, valid_password2
 
@@ -10,7 +10,7 @@ def main():
     lines = fileinput.input()
 
     valid_passwords_count = compose(
-        count,
+        length,
         ffilter(valid_password),
     )(lines)
 
@@ -23,7 +23,7 @@ def main2():
     lines = fileinput.input()
 
     valid_passwords_count = compose(
-        count,
+        length,
         ffilter(valid_password2),
     )(lines)
 
