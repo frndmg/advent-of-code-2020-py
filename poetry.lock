@@ -207,6 +207,20 @@ py = "*"
 pytest = ">=3.10"
 
 [[package]]
+name = "pytest-mock"
+version = "3.4.0"
+description = "Thin-wrapper around the mock package for easier use with pytest"
+category = "dev"
+optional = false
+python-versions = ">=3.5"
+
+[package.dependencies]
+pytest = ">=5.0"
+
+[package.extras]
+dev = ["pre-commit", "tox", "pytest-asyncio"]
+
+[[package]]
 name = "pytest-xdist"
 version = "2.2.0"
 description = "pytest xdist plugin for distributed testing and loop-on-failing modes"
@@ -261,7 +275,7 @@ python-versions = "*"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.9"
-content-hash = "7506875e19cbf8134df8d0667c015ef818ce680421e5e2e6fda414ef47b93f01"
+content-hash = "599ab45c52b681e67ae1e963493835182c8b3ff41f50e2e6d6f6eedf23e0e712"
 
 [metadata.files]
 apipkg = [
@@ -357,6 +371,10 @@ pytest = [
 pytest-forked = [
     {file = "pytest-forked-1.3.0.tar.gz", hash = "sha256:6aa9ac7e00ad1a539c41bec6d21011332de671e938c7637378ec9710204e37ca"},
     {file = "pytest_forked-1.3.0-py2.py3-none-any.whl", hash = "sha256:dc4147784048e70ef5d437951728825a131b81714b398d5d52f17c7c144d8815"},
+]
+pytest-mock = [
+    {file = "pytest-mock-3.4.0.tar.gz", hash = "sha256:c3981f5edee6c4d1942250a60d9b39d38d5585398de1bfce057f925bdda720f4"},
+    {file = "pytest_mock-3.4.0-py3-none-any.whl", hash = "sha256:c0fc979afac4aaba545cbd01e9c20736eb3fefb0a066558764b07d3de8f04ed3"},
 ]
 pytest-xdist = [
     {file = "pytest-xdist-2.2.0.tar.gz", hash = "sha256:1d8edbb1a45e8e1f8e44b1260583107fc23f8bc8da6d18cb331ff61d41258ecf"},
