@@ -14,6 +14,14 @@ def ffilter(f):
 
 
 def fnone(func, default=None):
+    """Returns a function that will call func if the argument is not none, and return default otherwise.
+    >>> f = fnone(str, default=1)
+    >>> f(1)
+    '1'
+    >>> f(None)
+    1
+    """
+
     @wraps(func)
     def _func(x):
         if x is not None:
@@ -25,6 +33,11 @@ def fnone(func, default=None):
 
 
 def tupled(func):
+    """Returns a tupled version of the function.
+    >>> tupled(lambda a, b: a + b)((2, 3))
+    5
+    """
+
     @wraps(func)
     def _func(x):
         return func(*x)
@@ -33,10 +46,19 @@ def tupled(func):
 
 
 def tuple_map(*fs):
+    """Returns a function that will apply every f_i for evey element of the tuple argument.
+    >>> inc = lambda x: x + 1
+    >>> tuple_map(None, inc)((1, 2))
+    (1, 3)
+    >>> tuple_map(inc)((1, 2))
+    (2, 2)
+    """
+
     return compose(
         tuple,
         partial(
             map,
+        fmap(
             tupled(lambda i, v: fs[i](v) if i < len(fs) and fs[i] else v),
         ),
         enumerate,
@@ -51,7 +73,28 @@ def apply(f, *args, **kwargs):
     return f(*args, **kwargs)
 
 
+def const(x):
+    """Returns a function that will always return `x`.
+    >>> f = const('foo')
+    >>> f()
+    'foo'
+    >>> f(1, a='brr')
+    'foo'
+    """
+
+    return lambda *_, **__: x
+
+
 def length(xs):
+    """Returns the length of xs.
+    >>> length([1, 2, 3])
+    3
+    >>> length(range(10))
+    10
+    >>> length(None for _ in range(10))
+    10
+    """
+
     len_ = getattr(xs, '__len__', None)
 
     def default_len():
