@@ -3,3 +3,4 @@
 reportrepair/data/input.txt filter=lfs diff=lfs merge=lfs -text
 password_philosophy/data/input.txt filter=lfs diff=lfs merge=lfs -text
 toboggan_trajectory/data/input.txt filter=lfs diff=lfs merge=lfs -text
+passport_processing/data/input.txt filter=lfs diff=lfs merge=lfs -text
