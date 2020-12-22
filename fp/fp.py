@@ -1,4 +1,5 @@
 from functools import partial, reduce, wraps
+from operator import itemgetter
 
 
 def compose(*F):
@@ -102,3 +103,7 @@ def length(xs):
         apply,
         fnone(identity, default=default_len)
     )(len_)
+
+
+def swap(x):
+    return itemgetter(1, 0)(x)
