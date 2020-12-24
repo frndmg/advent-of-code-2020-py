@@ -1,7 +1,8 @@
 import fileinput
+from functools import partial, reduce
+from operator import methodcaller
 
 from fp import compose, fmap
-from operator import methodcaller
 
 split_groups = methodcaller('split', '\n\n')
 
@@ -14,12 +15,20 @@ compute_yes_answers = compose(
 )
 
 
+how_many_questions_everyone_answered_yes = compose(
+    len,
+    partial(reduce, set.intersection),
+    fmap(set),
+    methodcaller('split', '\n'),
+)
+
+
 def main():
     text = ''.join(fileinput.input())
 
     count_sum = compose(
         sum,
-        fmap(compute_yes_answers),
+        fmap(how_many_questions_everyone_answered_yes),
         split_groups,
     )(text)
 
