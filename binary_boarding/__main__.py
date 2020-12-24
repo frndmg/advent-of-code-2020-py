@@ -3,7 +3,6 @@ from functools import partial
 from operator import eq, methodcaller
 
 from fp import compose, fmap
-from utils import sneak
 
 
 def follow_coor(coor, is_left, lo, hi):
@@ -43,7 +42,6 @@ def main():
             compose(
                 compute_seat_id,
                 methodcaller('rstrip'),
-            )
             ),
         ),
     )(seats)
@@ -53,5 +51,39 @@ def main():
     )
 
 
+def compute_missing_seat_id(seats_ids):
+    # lets go with the easy way, since we know how many seats can be
+    N = 1028
+    taken_seats_ids = [False for _ in range(N)]
+
+    for seat_id in seats_ids:
+        taken_seats_ids[seat_id] = True
+
+    taken_seats_started = False
+    for seat_id in range(N):
+        if taken_seats_started and not taken_seats_ids[seat_id]:
+            return seat_id
+        elif not taken_seats_started and taken_seats_ids[seat_id]:
+            taken_seats_started = True
+
+
+def main2():
+    seats = fileinput.input()
+
+    missing_seat_id = compose(
+        compute_missing_seat_id,
+        fmap(
+            compose(
+                compute_seat_id,
+                methodcaller('rstrip'),
+            ),
+        ),
+    )(seats)
+
+    print(
+        missing_seat_id,
+    )
+
+
 if __name__ == '__main__':
-    main()
+    main2()
