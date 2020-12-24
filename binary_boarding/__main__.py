@@ -44,6 +44,7 @@ def main():
                 compute_seat_id,
                 methodcaller('rstrip'),
             )
+            ),
         ),
     )(seats)
 
