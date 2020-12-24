@@ -16,15 +16,6 @@ NEEDED_KEYS = (
 )
 
 
-def sneak(label):
-    def _sneak(x):
-        print(f'{label} {x}')
-
-        return x
-
-    return _sneak
-
-
 def between(lo, hi):
     return lambda x: lo <= x <= hi
 
